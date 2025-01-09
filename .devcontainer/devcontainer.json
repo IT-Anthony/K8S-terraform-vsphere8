@@ -1,0 +1,30 @@
+{
+    "name": "Terraform vSphere",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "TERRAFORM_VERSION": "1.10.4"
+        }
+    },
+    "remoteUser": "vscode",
+    "mounts": [
+    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,readonly"
+    ],
+        "customizations": {
+            "vscode": {
+                "extensions": [
+                    "bierner.markdown-preview-github-styles",
+                    "DavidAnson.vscode-markdownlint",
+                    "donjayamanne.githistory",
+                    "eamodio.gitlens",
+                    "esbenp.prettier-vscode",
+                    "mhutchie.git-graph",
+                    "oderwat.indent-rainbow",
+                    "tamasfe.even-better-toml",
+                    "yzhang.markdown-all-in-one",
+                    "ms-azuretools.vscode-docker",
+                    "4ops.terraform"
+                ]
+            }
+        }
+    }
