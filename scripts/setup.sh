@@ -10,11 +10,16 @@ echo "Updating the system and installing necessary tools..."
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install apt-transport-https ca-certificates curl software-properties-common lsb-release gnupg2 htop -y
 
-# Install Docker
-echo "Installing Docker..."
-sudo curl -fsSL https://get.docker.com | bash
-sudo systemctl enable docker
-sudo systemctl start docker
+# Install containerd
+echo "Installing containerd..."
+sudo apt-get update && sudo apt-get install -y containerd
+
+# Configure containerd
+echo "Configuring containerd..."
+sudo mkdir -p /etc/containerd
+containerd config default | sudo tee /etc/containerd/config.toml
+sudo systemctl enable containerd
+sudo systemctl start containerd
 
 # Add Kubernetes repository
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
