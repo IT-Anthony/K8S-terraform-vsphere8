@@ -143,8 +143,8 @@ resource "vsphere_virtual_machine" "vm" {
   name              = "${var.vm_names[count.index]}"
   resource_pool_id  = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id      = data.vsphere_datastore.datastore.id
-  num_cpus          = 1
-  memory            = 1024
+  num_cpus          = 2
+  memory            = 2048
   guest_id          = var.guest_os
   annotation        = "Terraform generated VM on ${local.buildtime} - tips4tech.fr"
   network_interface {
