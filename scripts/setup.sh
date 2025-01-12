@@ -42,7 +42,7 @@ sudo systemctl enable kubelet
 # Configure the kernel for Kubernetes
 echo "Configuring the kernel..."
 sudo modprobe br_netfilter
-echo "br_netfilter" > /etc/modules-load.d/br_netfilter.conf
+sudo echo "br_netfilter" > /etc/modules-load.d/br_netfilter.conf
 echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward
 sudo sysctl -w net.ipv4.ip_forward=1
 sudo sysctl net.bridge.bridge-nf-call-iptables=1
